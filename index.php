@@ -1,3 +1,7 @@
+<?php
+    include('config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,6 @@
             <span class="line">Izberite Repetitor ▼</span><br>
                 <div id="list" class="hide">
                     <?php
-                        require_once ('config.php');  
                         $conn = mysqli_connect($database_host, $database_username, $database_password, $database_name) or die('Napaka');
                         $q="SELECT IDr,imeRep FROM repetitor ORDER BY imeRep";
                         $s=mysqli_stmt_init($conn);
@@ -48,7 +51,6 @@
         }
     </script>
     <?php
-    require_once ('config.php'); 
     if(isset($_POST["submit"])){
         extract($_POST);
         $conn = mysqli_connect($database_host, $database_username, $database_password, $database_name) or die('Napaka');
@@ -86,14 +88,14 @@
         }
         //Insert
         else if($data[0]==0){
-           
+
             if(!mysqli_stmt_prepare($s,$q)) echo "napaka";
             mysqli_stmt_bind_param($s,"ss",$klicni,$qth);
             mysqli_stmt_execute($s);
 
         }
 
-        //IDu   
+        //IDu
         if(!mysqli_stmt_prepare($s,$q3)) echo "napaka";
         mysqli_stmt_bind_param($s,"s",$klicni);
         mysqli_stmt_execute($s);
@@ -104,7 +106,7 @@
         if(!mysqli_stmt_prepare($s,$q5)) echo "napaka";
             mysqli_stmt_bind_param($s,"i",$IDu);
             mysqli_stmt_execute($s);
-        
+
         foreach($rpt as $v){
             if(!mysqli_stmt_prepare($s,$q4)) echo "napaka";
             mysqli_stmt_bind_param($s,"ii",$IDu,$v);
@@ -125,13 +127,13 @@
         $res=mysqli_query($conn, $q);
         echo '<table>
         <tr><th>Klicni znak</th><th>QTH</th><th>Repetitor</th><th>Input [MHz]</th><th>Output [MHz]</th></tr>';
-        
+
         while($data=mysqli_fetch_assoc($res)){
             $tab[$i]=$data;
             $i++;
         }
         foreach($tab as $v){
-            if($znak!=$v['KlicniZnak']){ 
+            if($znak!=$v['KlicniZnak']){
                 $znak=$v['KlicniZnak'];
                 $st[$znak]=1;
                 $j=1;
@@ -142,7 +144,7 @@
         }
         $znak='';
         foreach($tab as $key=>$v){
-            if($znak!=$v['KlicniZnak']){ 
+            if($znak!=$v['KlicniZnak']){
                 $znak=$v['KlicniZnak'];
                 echo '<tr><th rowspan="'.$st[$znak].'">'.$znak.'</th>'.'<td rowspan="'.$st[$znak].'">'.$v['Lokator'].'</td></tr>';
             }
