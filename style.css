@@ -1,0 +1,75 @@
+body{
+    background-color: rgb(226, 226, 226);
+}
+.naslov{
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.main{
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8%;
+    font-size: 1.125rem;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+    width:300px;
+    height:350px;
+}
+#podatki{
+    text-align: center;
+}
+.container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.hide{
+    display: none;
+}
+.list {
+    text-align: left;
+    display: inline-block;
+    padding: 2px;
+    height: 120px;
+    overflow: auto;
+}
+.line{
+    cursor: default;
+}
+input[type=submit]{
+    width:100%;
+    border:0px;
+    font-size: 1.125rem;
+    padding: 5px;
+}
+input[type=submit]:hover{
+    transition: 0.5s;
+    background-color: black;
+    color:white;
+}
+table,td,tr,th{
+    background-color: white;
+    color:black;
+    border: 1px solid black;
+    border-collapse:collapse;
+    padding: 10px;
+    font-size: 1.125rem;
+}
+table{
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+tr:first-child>th:nth-child(n+1){
+    background-color: rgb(252, 202, 76);
+}
+.avtor{
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+    padding: 10px;
+}
